@@ -15,7 +15,13 @@ class LogController extends Controller
     public function store(LogRequest $request)
     {
         try {
-            $line = "$request->app $request->version_code $request->version_os $request->error" . PHP_EOL;
+            
+            $origin = "";
+            
+            if(isset($request->origin)) $origin = $request->origin ;
+            
+            $line = "$request->app $request->version_code $request->version_os $origin $request->error" . PHP_EOL;
+            
             \Log::error($line);
         } catch (\Throwable $th) {
             \Log::error($th->getMessage());

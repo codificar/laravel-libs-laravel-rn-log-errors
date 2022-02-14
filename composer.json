@@ -1,18 +1,51 @@
 {
     "name": "codificar/rn-log-errors",
-    "description": "A react native log viewer library for laravel.",
+    "description": "A library to log errors in react native app",
+    "type": "package",
+    "require": {
+    },
+    "license": "Codificar Sistemas LTDA",
     "authors": [
         {
-            "name": "Codificar",
-            "email": "libs@codificar.com.br"
+            "name": "Joao Aires",
+            "email": "joao.aires@codificar.com.br"
+        },
+        {
+            "name": "Raphael Canguçu",
+            "email": "raphael.cangucu@codificar.com.br"
         }
     ],
-    "require": {
-        "codificar/talk": "dev-development@dev"
+    "repositories": [
+        {
+          "type": "package",
+          "package": {
+            "name": "codificar/rn-log-errors",
+            "version": "master",
+            "source": {
+              "url": "https://libs:ofImhksJ@git.codificar.com.br/laravel-libs/laravel-rn-log-errors.git",
+              "type": "git",
+              "reference": "master"
+            }
+          }
+        }
+    ],    
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
             "Codificar\\ReactNativeLogErrors\\": "src/"
         }
-    }
+        
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Codificar\\ReactNativeLogErrors\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
 }

@@ -16,7 +16,7 @@ Add in composer.json:
 
 ```php
 require:{
-        "codificar/rn-log-errors": "0.1.0",
+        "codificar/rn-log-errors": "0.1.1",
 }
 ```
 

@@ -17,12 +17,26 @@ class LogController extends Controller
         try {
             
             $origin = "";
+            $connection = [];
+            if(isset($request->origin)) {
+                $origin = $request->origin;
+            } 
+
+            if(isset($request->connection))  {
+                $connection = json_decode($request->connection, true);
+            }
+
+            $log = [
+                "app" => $request->app,
+                "versionCode" => $request->version_code,
+                "versionOS" => $request->version_os,
+                "origin" => $origin,
+                "connection" => $connection
+            ];
             
-            if(isset($request->origin)) $origin = $request->origin ;
+            $line = "$origin : " . json_encode($log) . PHP_EOL;
             
-            $line = "$request->app $request->version_code $request->version_os $origin $request->error" . PHP_EOL;
-            
-            \Log::error($line);
+            \Log::error($line . json_encode($request->error));
         } catch (\Throwable $th) {
             \Log::error($th->getMessage());
         }

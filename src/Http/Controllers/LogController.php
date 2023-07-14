@@ -17,13 +17,13 @@ class LogController extends Controller
         try {
             
             $origin = "";
-            $connection = [];
+            $info = [];
             if(isset($request->origin)) {
                 $origin = $request->origin;
             } 
 
-            if(isset($request->connection))  {
-                $connection = json_decode($request->connection, true);
+            if(isset($request->info))  {
+                $info = json_decode($request->info, true);
             }
 
             $log = [
@@ -31,7 +31,7 @@ class LogController extends Controller
                 "versionCode" => $request->version_code,
                 "versionOS" => $request->version_os,
                 "origin" => $origin,
-                "connection" => $connection
+                "info" => $info
             ];
             
             $line = "$origin : " . json_encode($log) . PHP_EOL;
